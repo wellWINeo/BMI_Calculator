@@ -2,4 +2,14 @@
     <string name="app_name">BMI_Calculator</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    String for buttons on calculators tab-->
+    <string name="bmi_calculator">Индекс массы тела</string>
+    <string name="level_motor_ability">Уровень двигательной активности</string>
+    <string name="stamina_coef">Коэффицент выносливости</string>
+    <string name="cardio_regulation">Уровень регуляции сердечно-сосудистой системы</string>
+    <string name="life_index">Жизненный индекс</string>
+    <string name="skibinski_index">Циркулярно-респираторный коэффицент</string>
+    <string name="vegetative_index">Вегетативный индекс</string>
+    <string name="functional_changes">Уровень функциональных изменений</string>
 </resources>

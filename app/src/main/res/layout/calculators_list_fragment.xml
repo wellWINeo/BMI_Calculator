@@ -55,6 +55,7 @@
                 <TextView android:text="Возраст: " />
                 <EditText
                     android:id="@+id/etAge"
+
                     android:inputType="numberSigned" />
             </TableRow>
         </TableLayout>
@@ -72,8 +73,19 @@
             />
     </LinearLayout>
 
-
-
-
+    <ScrollView
+        android:id="@+id/lvButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/llData"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <LinearLayout
+            android:id="@+id/llButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

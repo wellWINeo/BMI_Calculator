@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CalculatorsListFragment">
+
+<!--    header-->
+    <TextView
+        android:id="@+id/txtSetData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/cardview_dark_background"
+        android:text="Укажите:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+<!--    image with input fields-->
+    <LinearLayout
+        android:id="@+id/llData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtSetData"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal">
+        <TableLayout
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content">
+            <TableRow android:gravity="center">
+                <TextView android:text="Пол: " />
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton android:id="@+id/radio_pirates"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="муж." />
+                    <RadioButton android:id="@+id/radio_ninjas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="жен." />
+                </RadioGroup>
+            </TableRow>
+
+            <TableRow>
+                <TextView android:text="Возраст: " />
+                <EditText
+                    android:id="@+id/etAge"
+                    android:inputType="numberSigned" />
+            </TableRow>
+        </TableLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_marginEnd="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            />
+    </LinearLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

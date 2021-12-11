@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView navBar;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         // some launch staff
         init();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         // TODO remove
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(
@@ -77,6 +80,5 @@ public class MainActivity extends AppCompatActivity {
         ft.replace(R.id.frameLayout, fragment);
         ft.commit();
     }
-
 
 }

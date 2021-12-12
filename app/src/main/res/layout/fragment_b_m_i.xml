@@ -7,7 +7,7 @@
     tools:context=".CalculateFragments.BMI">
 
     <TextView
-        android:id="@+id/bmiTitle"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/bmiDescription"
+        android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -30,22 +30,23 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bmiTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left"
+        android:layout_marginLeft="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bmiDescription">
+        app:layout_constraintTop_toBottomOf="@+id/description">
 
         <TableRow android:gravity="center_vertical">
 
             <TextView android:text="Вес: " />
 
             <EditText
-                android:id="@+id/bmiBodyWeight"
+                android:id="@+id/weight"
                 android:width="100dp"
                 android:inputType="numberSigned"/>
 
@@ -57,7 +58,7 @@
             <TextView android:text="Рост: " />
 
             <EditText
-                android:id="@+id/bmiBodyHeight"
+                android:id="@+id/height"
                 android:width="100dp"
                 android:inputType="numberSigned" />
             <TextView android:text="(см)" />
@@ -65,7 +66,7 @@
     </TableLayout>
 
     <Button
-        android:id="@+id/bmiCalculateButton"
+        android:id="@+id/calculateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

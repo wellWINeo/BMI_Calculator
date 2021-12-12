@@ -1,14 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CalculateFragments.BMI">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="BMI" />
+        android:id="@+id/bmiTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:text="Индекс массы тела"
+        android:textSize="25sp"
+        android:textColor="@color/cardview_dark_background"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/bmiDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="Индекс оценивает степень соответствия массы тела человека и роста, в результате определения индекса можна косвенно судить о норме, недостатке или избыточной массе тела."
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bmiTitle" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bmiDescription">
+
+        <TableRow android:gravity="center_vertical">
+
+            <TextView android:text="Вес: " />
+
+            <EditText
+                android:id="@+id/bmiBodyWeight"
+                android:width="100dp"
+                android:inputType="numberSigned"/>
+
+            <TextView android:text="(кг)" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView android:text="Рост: " />
+
+            <EditText
+                android:id="@+id/bmiBodyHeight"
+                android:width="100dp"
+                android:inputType="numberSigned" />
+            <TextView android:text="(см)" />
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/bmiCalculateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="10dp"
+        android:text="Определить"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

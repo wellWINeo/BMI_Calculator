@@ -52,9 +52,13 @@ public class CalculatorsListFragment extends Fragment {
 
 
     private void fillListViewButtons(){
-        for(int i = 0; i < CalculatorsList.buttons.length; i++){
+        llButtons.removeAllViews();
+
+        String[] categories = getResources().getStringArray(R.array.categories);
+
+        for(int i = 0; i < categories.length; i++){
             Button btn = new Button(context);
-            btn.setText(CalculatorsList.buttons[i].getText());
+            btn.setText(categories[i]);
             int finalI = i;
             btn.setOnClickListener(view -> {
                 Intent intent = new Intent(context, CalculatorViewActivity.class);

@@ -1,7 +1,15 @@
 <resources>
     <string name="app_name">BMI_Calculator</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="categories">
+        <item>Индекс массы тела</item>
+        <item>Уровень двигательной активности</item>
+        <item>Коэффицент выносливости</item>
+        <item>Уровень регуляции сердечно-сосудистой системы</item>
+        <item>Жизненный индекс</item>
+        <item>Циркулярно-респираторный коэффицент Скибински</item>
+        <item>Вегетативный индекс Кердо</item>
+        <item>Индекс функциональных изменений</item>
+    </string-array>
 
     <!--    String for buttons on calculators tab-->
     <string name="bmi_calculator">Индекс массы тела</string>

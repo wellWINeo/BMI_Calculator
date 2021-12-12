@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,20 +51,16 @@ public class CalculatorsListFragment extends Fragment {
     }
 
 
-
     private void fillListViewButtons(){
-        // TODO fill with real data
-        // calculator routing
-
-
         for(int i = 0; i < CalculatorsList.buttons.length; i++){
             Button btn = new Button(context);
             btn.setText(CalculatorsList.buttons[i].getText());
             int finalI = i;
             btn.setOnClickListener(view -> {
-                Intent intent = new Intent(context, CalculateActivity.class);
+                Intent intent = new Intent(context, CalculatorViewActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt("index", finalI);
+                intent.putExtras(bundle);
                 startActivity(intent);
             });
 

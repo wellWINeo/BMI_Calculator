@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.github.wellwineo.bmi_calculator.R;
 
+import java.util.HashMap;
+
 public class VegetativeIndex extends Fragment {
 
     // param names
@@ -81,8 +83,16 @@ public class VegetativeIndex extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putString("title", "Вегетативный индекс Кердо");
         bundle.putString("result", String.valueOf(vegetativeIndex));
+        bundle.putSerializable("values", getInputData());
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+    private HashMap<String, String> getInputData(){
+        HashMap<String, String> map = new HashMap<>();
+        map.put("heartrate", etHeartRate.getText().toString());
+        map.put("diastolicPressure", etDiastolicPressure.getText().toString());
+        return map;
     }
 
     @Override

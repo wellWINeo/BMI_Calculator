@@ -15,6 +15,9 @@ import androidx.fragment.app.Fragment;
 
 import com.github.wellwineo.bmi_calculator.R;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class FunctionalChanges extends Fragment {
 
     // param names
@@ -93,8 +96,20 @@ public class FunctionalChanges extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putString("title", "Коэффицент выносливости");
         bundle.putString("result", String.valueOf(functionalIndex));
+        bundle.putSerializable("values", getInputData());
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+    private HashMap<String, String> getInputData(){
+        HashMap<String, String> map = new HashMap<>();
+        map.put("heartrate", etHeartRate.getText().toString());
+        map.put("systolicPressure", etSystolicPressure.getText().toString());
+        map.put("diastolicPressure", etDiastolicPressure.getText().toString());
+        map.put("age", etAge.getText().toString());
+        map.put("weight", etWeight.getText().toString());
+        map.put("height", etHeight.getText().toString());
+        return map;
     }
 
     @Override

@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.github.wellwineo.bmi_calculator.R;
+
+import java.util.HashMap;
 
 
 public class MotorAbility extends Fragment {
@@ -67,14 +70,22 @@ public class MotorAbility extends Fragment {
             e.printStackTrace();
             Toast.makeText(getContext(), "Invalid value",
                     Toast.LENGTH_SHORT).show();
+            return;
         }
 
         Intent intent = new Intent(getContext(), ResultsActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("title", "Уровень двигательной активности");
         bundle.putString("result", String.valueOf(stepsCount));
+        bundle.putSerializable("values", getInputData());
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+    private HashMap<String, String> getInputData(){
+        HashMap<String, String> map = new HashMap<>();
+        map.put("stepsCount", etStepsCount.getText().toString());
+        return map;
     }
 
     @Override

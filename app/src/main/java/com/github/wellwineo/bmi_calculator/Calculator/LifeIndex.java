@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.github.wellwineo.bmi_calculator.R;
 import com.j256.ormlite.stmt.query.In;
 
+import java.util.HashMap;
+
 public class LifeIndex extends Fragment {
 
     // param names
@@ -82,8 +84,16 @@ public class LifeIndex extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putString("title", "Жизненный индекс");
         bundle.putString("result", String.valueOf(lifeIndex));
+        bundle.putSerializable("values", getInputData());
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+    private HashMap<String, String> getInputData(){
+        HashMap<String, String> map = new HashMap<>();
+        map.put("weight", etWeight.getText().toString());
+        map.put("lungsVolume", etLungsVolume.getText().toString());
+        return map;
     }
 
     @Override

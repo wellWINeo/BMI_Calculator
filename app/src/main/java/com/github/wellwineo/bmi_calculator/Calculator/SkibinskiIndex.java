@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.github.wellwineo.bmi_calculator.R;
 
+import java.util.HashMap;
+
 public class SkibinskiIndex extends Fragment {
 
     // param names
@@ -85,8 +87,17 @@ public class SkibinskiIndex extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putString("title", "Циркулярно респираторный коэффицент Скибински");
         bundle.putString("result", String.valueOf(skibinskiIndex));
+        bundle.putSerializable("values", getInputData());
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+    private HashMap<String, String> getInputData(){
+        HashMap<String, String> map = new HashMap<>();
+        map.put("heartrate", etHeartRate.getText().toString());
+        map.put("lungsVolume", etLungsVolume.getText().toString());
+        map.put("stange", etStange.getText().toString());
+        return map;
     }
 
     @Override

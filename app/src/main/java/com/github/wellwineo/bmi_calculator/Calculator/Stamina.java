@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.github.wellwineo.bmi_calculator.R;
 
+import java.util.HashMap;
+
 public class Stamina extends Fragment {
     // param names
     private static final String SEX_PARAM = "sex";
@@ -83,8 +85,17 @@ public class Stamina extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putString("title", "Коэффицент выносливости");
         bundle.putString("result", String.valueOf(staminaCoef));
+        bundle.putSerializable("values", getInputData());
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+    private HashMap<String, String> getInputData(){
+        HashMap<String, String> map = new HashMap<>();
+        map.put("heartrate", etHeartRate.getText().toString());
+        map.put("systolicPressure", etSystolicPressure.getText().toString());
+        map.put("diastolicPressure", etDiastolicPressure.getText().toString());
+        return map;
     }
 
     @Override

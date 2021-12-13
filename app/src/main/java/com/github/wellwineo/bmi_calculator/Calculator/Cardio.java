@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.github.wellwineo.bmi_calculator.R;
 
+import java.util.HashMap;
+
 
 public class Cardio extends Fragment {
 
@@ -83,8 +85,16 @@ public class Cardio extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putString("title", "Уровень регуляции сердечно-сосудистой системы");
         bundle.putString("result", String.valueOf(cardioIndex));
+        bundle.putSerializable("values", getInputData());
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+    private HashMap<String, String> getInputData(){
+        HashMap<String, String> map = new HashMap<>();
+        map.put("heartrate", etHeartRate.getText().toString());
+        map.put("systolicPressure", etSystolicPressure.getText().toString());
+        return map;
     }
 
     @Override

@@ -5,14 +5,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.github.wellwineo.bmi_calculator.CalculateFragments.BMI;
-import com.github.wellwineo.bmi_calculator.CalculateFragments.Cardio;
-import com.github.wellwineo.bmi_calculator.CalculateFragments.FunctionalChanges;
-import com.github.wellwineo.bmi_calculator.CalculateFragments.LifeIndex;
-import com.github.wellwineo.bmi_calculator.CalculateFragments.MotorAbility;
-import com.github.wellwineo.bmi_calculator.CalculateFragments.SkibinskiIndex;
-import com.github.wellwineo.bmi_calculator.CalculateFragments.Stamina;
-import com.github.wellwineo.bmi_calculator.CalculateFragments.VegetativeIndex;
+import com.github.wellwineo.bmi_calculator.Calculator.BMI;
+import com.github.wellwineo.bmi_calculator.Calculator.Cardio;
+import com.github.wellwineo.bmi_calculator.Calculator.FunctionalChanges;
+import com.github.wellwineo.bmi_calculator.Calculator.LifeIndex;
+import com.github.wellwineo.bmi_calculator.Calculator.MotorAbility;
+import com.github.wellwineo.bmi_calculator.Calculator.SkibinskiIndex;
+import com.github.wellwineo.bmi_calculator.Calculator.Stamina;
+import com.github.wellwineo.bmi_calculator.Calculator.VegetativeIndex;
 
 public class ScreenSlidePagerAdapter extends FragmentStateAdapter {
 

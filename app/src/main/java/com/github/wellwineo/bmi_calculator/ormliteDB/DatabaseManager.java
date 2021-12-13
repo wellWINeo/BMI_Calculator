@@ -24,6 +24,7 @@ public class DatabaseManager {
     private static final String ID = "id";
     private static final String TITLE = "title";
     private static final String RESULT = "result";
+    public static final String IS_OK = "isOk";
     private static final String VALUES = "values";
 
     public DatabaseManager(Context context){
@@ -69,6 +70,7 @@ public class DatabaseManager {
             UpdateBuilder updateBuilder = resultDao.updateBuilder();
             String title = result.getTitle() != null ? result.getTitle() : "";
             String _result = result.getResult() != null ? result.getResult() : "";
+            boolean isOk = result.isOk();
             HashMap<String, String> values = result.getValues() != null ?
                     result.getValues() :
                     new HashMap<>();

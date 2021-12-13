@@ -1,4 +1,4 @@
-package com.github.wellwineo.bmi_calculator.CalculateFragments;
+package com.github.wellwineo.bmi_calculator.Calculator;
 
 import android.os.Bundle;
 
@@ -12,10 +12,10 @@ import com.github.wellwineo.bmi_calculator.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link LifeIndex#newInstance} factory method to
+ * Use the {@link FunctionalChanges#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LifeIndex extends Fragment {
+public class FunctionalChanges extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class LifeIndex extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public LifeIndex() {
+    public FunctionalChanges() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class LifeIndex extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment LifeIndex.
+     * @return A new instance of fragment FunctionalChanges.
      */
     // TODO: Rename and change types and number of parameters
-    public static LifeIndex newInstance(String param1, String param2) {
-        LifeIndex fragment = new LifeIndex();
+    public static FunctionalChanges newInstance(String param1, String param2) {
+        FunctionalChanges fragment = new FunctionalChanges();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class LifeIndex extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_life_index, container, false);
+        return inflater.inflate(R.layout.fragment_functional_changes, container, false);
     }
 }

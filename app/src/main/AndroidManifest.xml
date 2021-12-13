@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BMI_Calculator">
         <activity
+            android:name=".Calculator.ResultsActivity"
+            android:exported="false" />
+        <activity
             android:name=".CalculatorViewActivity"
             android:exported="false" />
         <activity

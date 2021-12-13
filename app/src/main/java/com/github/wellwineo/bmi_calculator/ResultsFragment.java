@@ -2,57 +2,58 @@ package com.github.wellwineo.bmi_calculator;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ResultsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.github.wellwineo.bmi_calculator.ormliteDB.Result;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+
 public class ResultsFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    ArrayList<Result> results;
+    ListView lvResults;
+    ListAdapter adapter;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    public ResultsFragment() { }
 
-    public ResultsFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ResultsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ResultsFragment newInstance(String param1, String param2) {
-        ResultsFragment fragment = new ResultsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public static ResultsFragment newInstance() {
+        return new ResultsFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+        // DEBUG
+        results = new ArrayList<>(Arrays.asList(
+                new Result(1, "Индекс массы тела", "Все хорошо", true, new HashMap<>()),
+                new Result(2, "Индекс массы тела", "Все хорошо", true, new HashMap<>()),
+                new Result(3, "Индекс массы тела", "Все хорошо", true, new HashMap<>())
+        ));
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        adapter = new ResultListViewAdapter(getContext(), results);
+        lvResults.setAdapter(adapter);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        lvResults = getView().findViewById(R.id.lvResults);
     }
 
     @Override

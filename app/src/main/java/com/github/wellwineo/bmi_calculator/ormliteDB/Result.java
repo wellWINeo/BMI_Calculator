@@ -23,6 +23,10 @@ public class Result {
 
     @DatabaseField
     private
+    boolean isOk;
+
+    @DatabaseField
+    private
     HashMap<String, String> values;
 
     public int getId() {
@@ -57,5 +61,22 @@ public class Result {
         this.values = values;
     }
 
+    public boolean isOk() {
+        return isOk;
+    }
+
+    public void setOk(boolean ok) {
+        isOk = ok;
+    }
+
     public Result(){}
+
+    public Result(int id, String title, String result, boolean isOk,
+                  HashMap<String, String> values){
+        this.id = id;
+        this.title = title;
+        this.result = result;
+        this.isOk = isOk;
+        this.values = values;
+    }
 }

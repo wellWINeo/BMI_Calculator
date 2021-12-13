@@ -50,7 +50,7 @@
                 android:layout_weight="3" />
 
             <EditText
-                android:id="@+id/heartRate"
+                android:id="@+id/weight"
                 android:minWidth="100dp"
                 android:layout_weight="2"
                 android:inputType="numberSigned"/>
@@ -68,7 +68,7 @@
                 android:layout_weight="3" />
 
             <EditText
-                android:id="@+id/systolicPressure"
+                android:id="@+id/lungsVolume"
                 android:minWidth="100dp"
                 android:layout_weight="2"
                 android:inputType="numberSigned"/>

@@ -1,49 +1,40 @@
 package com.github.wellwineo.bmi_calculator.Calculator;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.github.wellwineo.bmi_calculator.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MotorAbility#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class MotorAbility extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String SEX_PARAM = "sex";
+    public static final String AGE_PARAM = "age";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private Sex sex;
+    private int age;
 
-    public MotorAbility() {
-        // Required empty public constructor
-    }
+    EditText etStepsCount;
+    Button btn;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MotorAbility.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MotorAbility newInstance(String param1, String param2) {
+    public MotorAbility() { }
+
+    public static MotorAbility newInstance(Sex sex, int age) {
         MotorAbility fragment = new MotorAbility();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(SEX_PARAM, sex.toString());
+        args.putInt(AGE_PARAM, age);
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,10 +42,39 @@ public class MotorAbility extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+        Bundle args = getArguments();
+        if (args != null){
+            sex = Sex.valueOf(args.getString(SEX_PARAM));
+            age = args.getInt(AGE_PARAM);
+            Toast.makeText(getContext(), sex.toString() + " " + age, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        etStepsCount = view.findViewById(R.id.stepsCount);
+        btn = view.findViewById(R.id.calculateButton);
+
+        btn.setOnClickListener(this::buttonHandler);
+    }
+
+    private void buttonHandler(View view){
+        int stepsCount = 0;
+        try {
+            stepsCount = Integer.parseInt(String.valueOf(etStepsCount.getText()));
+        } catch (NumberFormatException e){
+            e.printStackTrace();
+            Toast.makeText(getContext(), "Invalid value",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        Intent intent = new Intent(getContext(), ResultsActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("title", "Уровень двигательной активности");
+        bundle.putString("result", String.valueOf(stepsCount));
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     @Override

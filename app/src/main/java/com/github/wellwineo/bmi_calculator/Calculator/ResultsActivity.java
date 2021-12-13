@@ -12,7 +12,8 @@ import com.github.wellwineo.bmi_calculator.R;
 public class ResultsActivity extends AppCompatActivity {
 
     Button button;
-    TextView textView;
+    TextView title;
+    TextView result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,16 +21,22 @@ public class ResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_results);
 
         button = findViewById(R.id.backButton);
-        textView = findViewById(R.id.title);
+        title = findViewById(R.id.title);
+        result = findViewById(R.id.result);
+
 
         button.setOnClickListener(view -> finish());
 
-        String title = "No title";
+        String titleText = "No title";
+        String resultText = "No recommendations";
 
         Bundle bundle = getIntent().getExtras();
-        if (bundle != null)
-            title = bundle.getString("title");
+        if (bundle != null){
+            titleText = bundle.getString("title");
+            resultText = bundle.getString("result");
+        }
 
-        textView.setText(title);
+        title.setText(titleText);
+        result.setText(resultText);
     }
 }

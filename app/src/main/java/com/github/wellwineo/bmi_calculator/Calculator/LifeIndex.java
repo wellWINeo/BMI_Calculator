@@ -1,49 +1,43 @@
 package com.github.wellwineo.bmi_calculator.Calculator;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.github.wellwineo.bmi_calculator.R;
+import com.j256.ormlite.stmt.query.In;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link LifeIndex#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class LifeIndex extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    // param names
+    private static final String SEX_PARAM = "sex";
+    private static final String AGE_PARAM = "age";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    // params
+    private Sex sex;
+    private int age;
 
-    public LifeIndex() {
-        // Required empty public constructor
-    }
+    // elements
+    EditText etWeight, etLungsVolume;
+    Button btn;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment LifeIndex.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static LifeIndex newInstance(String param1, String param2) {
+    public LifeIndex() { }
+
+    public static LifeIndex newInstance(Sex sex, int age) {
         LifeIndex fragment = new LifeIndex();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(SEX_PARAM, sex.toString());
+        args.putString(AGE_PARAM, String.valueOf(age));
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,10 +45,45 @@ public class LifeIndex extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+        Bundle args = getArguments();
+        if (args != null){
+            sex = Sex.valueOf(args.getString(SEX_PARAM));
+            age = args.getInt(AGE_PARAM);
         }
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        etWeight = view.findViewById(R.id.weight);
+        etLungsVolume = view.findViewById(R.id.lungsVolume);
+        btn = view.findViewById(R.id.calculateButton);
+
+        btn.setOnClickListener(this::buttonHandler);
+    }
+
+    private void buttonHandler(View view) {
+        double weight = 0;
+        double lungsVolume = 0;
+        try {
+            weight = Double.parseDouble(String.valueOf(etWeight.getText()));
+            lungsVolume = Double.parseDouble(String.valueOf(
+                    etLungsVolume.getText()));
+        } catch (NumberFormatException e){
+            e.printStackTrace();
+            Toast.makeText(getContext(), "Invalid input data", Toast
+                    .LENGTH_SHORT).show();
+            return;
+        }
+
+        double lifeIndex = lungsVolume / weight;
+
+        Intent intent = new Intent(getContext(), ResultsActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("title", "Жизненный индекс");
+        bundle.putString("result", String.valueOf(lifeIndex));
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     @Override

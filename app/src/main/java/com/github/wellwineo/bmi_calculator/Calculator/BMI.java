@@ -1,60 +1,72 @@
 package com.github.wellwineo.bmi_calculator.Calculator;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.wellwineo.bmi_calculator.R;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link BMI#newInstance} factory method to
- * create an instance of this fragment.
+ * Fragment to calculate Body Mass Index
  */
 public class BMI extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    Button btn;
+    EditText etWeight, etHeight;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    public BMI() { }
 
-    public BMI() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BMI.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static BMI newInstance(String param1, String param2) {
-        BMI fragment = new BMI();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public static BMI newInstance() {
+        return new BMI();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        btn = view.findViewById(R.id.calculateButton);
+
+        etWeight = view.findViewById(R.id.weight);
+        etHeight = view.findViewById(R.id.height);
+
+        btn.setOnClickListener(this::buttonHandler);
+    }
+
+    private void buttonHandler(View view){
+        double weight, height;
+        try {
+            weight = Double.parseDouble(String.valueOf(etWeight.getText()));
+            height = Double.parseDouble(String.valueOf(etHeight.getText())) / 100;
+        } catch (NumberFormatException e) {
+            Toast.makeText(getContext(), "Fields can't be empty or 0",
+                    Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+            return;
         }
+
+        double index = weight / Math.pow(height, 2);
+
+        Intent intent = new Intent(getContext(), ResultsActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("title", "Индекс массы тела");
+        bundle.putString("result", String.valueOf(index));
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     @Override

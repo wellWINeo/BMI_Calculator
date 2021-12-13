@@ -1,11 +1,11 @@
 package com.github.wellwineo.bmi_calculator.ormliteDB;
 
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.table.DatabaseTable;
 import com.j256.ormlite.field.DatabaseField;
 
 import java.util.HashMap;
-import java.util.Map;
 
 @DatabaseTable(tableName = "results")
 public class Result {
@@ -25,7 +25,11 @@ public class Result {
     private
     boolean isOk;
 
-    @DatabaseField
+//    @DatabaseField
+//    private
+//    HashMap<String, String> values;
+
+    @DatabaseField(dataType = DataType.SERIALIZABLE)
     private
     HashMap<String, String> values;
 
@@ -74,6 +78,14 @@ public class Result {
     public Result(int id, String title, String result, boolean isOk,
                   HashMap<String, String> values){
         this.id = id;
+        this.title = title;
+        this.result = result;
+        this.isOk = isOk;
+        this.values = values;
+    }
+
+    public Result(String title, String result, boolean isOk,
+                  HashMap<String, String> values){
         this.title = title;
         this.result = result;
         this.isOk = isOk;

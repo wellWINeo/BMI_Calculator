@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.github.wellwineo.bmi_calculator.ormliteDB.DatabaseManager;
 import com.github.wellwineo.bmi_calculator.ormliteDB.Result;
 
 import java.util.ArrayList;
@@ -35,11 +36,14 @@ public class ResultsFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         // DEBUG
-        results = new ArrayList<>(Arrays.asList(
-                new Result(1, "Индекс массы тела", "Все хорошо", true, new HashMap<>()),
-                new Result(2, "Индекс массы тела", "Все хорошо", true, new HashMap<>()),
-                new Result(3, "Индекс массы тела", "Все хорошо", true, new HashMap<>())
-        ));
+//        results = new ArrayList<>(Arrays.asList(
+//                new Result(1, "Индекс массы тела", "Все хорошо", true, new HashMap<>()),
+//                new Result(2, "Индекс массы тела", "Все хорошо", true, new HashMap<>()),
+//                new Result(3, "Индекс массы тела", "Все хорошо", true, new HashMap<>())
+//        ));
+
+        DatabaseManager dbManager = DatabaseManager.getInstance(getContext());
+        results = (ArrayList<Result>) dbManager.getAllResults();
     }
 
     @Override

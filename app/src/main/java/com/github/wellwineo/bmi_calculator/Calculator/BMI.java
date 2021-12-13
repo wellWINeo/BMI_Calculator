@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.github.wellwineo.bmi_calculator.R;
 
+import java.util.HashMap;
+
 /**
  * Fragment to calculate Body Mass Index
  */
@@ -65,8 +67,16 @@ public class BMI extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putString("title", "Индекс массы тела");
         bundle.putString("result", String.valueOf(index));
+        bundle.putSerializable("values", getInputData());
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+    public HashMap<String, String> getInputData(){
+        HashMap<String, String> map = new HashMap<>();
+        map.put("weight", etWeight.getText().toString());
+        map.put("height", etHeight.getText().toString());
+        return map;
     }
 
     @Override

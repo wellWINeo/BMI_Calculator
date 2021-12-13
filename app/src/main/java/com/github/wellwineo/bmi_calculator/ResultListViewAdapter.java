@@ -92,7 +92,7 @@ public class ResultListViewAdapter implements ListAdapter {
 
     @Override
     public int getViewTypeCount() {
-        return results.size();
+        return 1;
     }
 
     @Override

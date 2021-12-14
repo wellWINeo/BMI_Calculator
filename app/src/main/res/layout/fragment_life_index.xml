@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
-        android:text="Жизненные индекс (мл/кг)"
+        android:text="@string/LifeIndex_title"
         android:textSize="25sp"
         android:textColor="@color/cardview_dark_background"
         android:textStyle="bold"
@@ -26,7 +26,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:text="Дает косвенное представление о функциональных возможностях системы внешнего дыхания. \nДля определения индекса вам понадобитсчя спирометр."
+        android:text="@string/LifeIndex_desc"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,17 +46,18 @@
             android:gravity="center_vertical"
             android:weightSum="5">
             <TextView
-                android:text="Масса тела :"
+                android:text="@string/weight"
                 android:layout_weight="3" />
 
             <EditText
                 android:id="@+id/weight"
                 android:minWidth="100dp"
                 android:layout_weight="2"
-                android:inputType="numberSigned"/>
+                android:inputType="numberSigned"
+                android:importantForAutofill="no" />
 
             <TextView
-                android:text="(кг)"
+                android:text="@string/kg"
                 android:layout_weight="1"/>
         </TableRow>
 
@@ -64,7 +65,7 @@
             android:gravity="center_vertical"
             android:weightSum="5">
             <TextView
-                android:text="Жизненная емкость легких (ЖЕЛ):"
+                android:text="@string/lungsVolume"
                 android:layout_weight="3" />
 
             <EditText
@@ -74,7 +75,7 @@
                 android:inputType="numberSigned"/>
 
             <TextView
-                android:text="(мл)"
+                android:text="@string/ml"
                 android:layout_weight="1"/>
         </TableRow>
 
@@ -88,6 +89,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="10dp"
-        android:text="Определить"/>
+        android:text="@string/Calculate"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:text="Коэффицент выносливости (усл. ед.)"
+        android:text="@string/Stamina_title"
         android:textSize="25sp"
         android:textColor="@color/cardview_dark_background"
         android:textStyle="bold"
@@ -27,7 +27,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:text="Характеризует функциональное состояние сердечно-сосудистой системы."
+        android:text="@string/Stamina_desc"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,17 +47,18 @@
             android:gravity="center_vertical"
             android:weightSum="5">
             <TextView
-                android:text="Частота сердечных сокращений (ЧСС):"
+                android:text="@string/heartrate"
                 android:layout_weight="3" />
 
             <EditText
                 android:id="@+id/heartRate"
                 android:minWidth="100dp"
                 android:layout_weight="2"
-                android:inputType="numberSigned"/>
+                android:inputType="numberSigned"
+                android:importantForAutofill="no" />
 
             <TextView
-                android:text="(уд./мин.)"
+                android:text="@string/bpm"
                 android:layout_weight="1"/>
         </TableRow>
 
@@ -65,17 +66,18 @@
             android:gravity="center_vertical"
             android:weightSum="5">
             <TextView
-                android:text="Систолическое артериальное давление (САД):"
+                android:text="@string/SAP"
                 android:layout_weight="3" />
 
             <EditText
                 android:id="@+id/systolicPressure"
                 android:minWidth="100dp"
                 android:layout_weight="2"
-                android:inputType="numberSigned"/>
+                android:inputType="numberSigned"
+                android:importantForAutofill="no" />
 
             <TextView
-                android:text="(мм рт. ст.)"
+                android:text="@string/mm_hg"
                 android:layout_weight="1"/>
         </TableRow>
 
@@ -83,17 +85,18 @@
             android:gravity="center_vertical"
             android:weightSum="5">
             <TextView
-                android:text="Диастолическое артериальное давление (ДАД):"
+                android:text="@string/DAP"
                 android:layout_weight="3" />
 
             <EditText
                 android:id="@+id/diastolicPressure"
                 android:minWidth="100dp"
                 android:layout_weight="2"
-                android:inputType="numberSigned"/>
+                android:inputType="numberSigned"
+                android:importantForAutofill="no" />
 
             <TextView
-                android:text="(мм рт. ст.)"
+                android:text="@string/mm_hg"
                 android:layout_weight="1"/>
         </TableRow>
 
@@ -107,6 +110,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="10dp"
-        android:text="Определить"/>
+        android:text="@string/Calculate"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
-        android:text="Уровень двигательной активности"
+        android:text="@string/MotorAbility_title"
         android:textSize="25sp"
         android:textColor="@color/cardview_dark_background"
         android:textStyle="bold"
@@ -33,7 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Количество шагов в сутки (средний результат за год)"
+            android:text="@string/MotorAbility_desc"
             />
         <EditText
             android:id="@+id/stepsCount"
@@ -41,7 +41,8 @@
             android:layout_weight="1"
             android:enabled="true"
             android:inputType="numberSigned"
-             android:layout_width="wrap_content"/>
+             android:layout_width="wrap_content"
+            android:importantForAutofill="no" />
     </LinearLayout>
 
     <Button
@@ -52,6 +53,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="10dp"
-        android:text="Определить"/>
+        android:text="@string/Calculate"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

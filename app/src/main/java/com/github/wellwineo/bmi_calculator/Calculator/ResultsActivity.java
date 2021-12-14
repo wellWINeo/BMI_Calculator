@@ -44,6 +44,7 @@ public class ResultsActivity extends AppCompatActivity {
         }
 
         title.setText(titleText);
+        getSupportActionBar().setTitle(titleText);
         result.setText(resultText);
 
         saveToDB();

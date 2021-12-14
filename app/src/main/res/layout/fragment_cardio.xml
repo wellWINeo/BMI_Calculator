@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
-        android:text="Уровень регуляции сердечно-сосудистой системы"
+        android:text="@string/Cardio_title"
         android:textSize="25sp"
         android:textColor="@color/cardview_dark_background"
         android:textStyle="bold"
@@ -26,7 +26,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:text="Индекс используется для косвенного определения степени обеспеченности мокарда кислородом."
+        android:text="@string/Cardio_desc"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,26 +44,26 @@
 
         <TableRow android:gravity="center_vertical">
 
-            <TextView android:text="ЧСС:" />
+            <TextView android:text="@string/heartrate" />
 
             <EditText
                 android:id="@+id/heartRate"
                 android:minWidth="100dp"
                 android:inputType="numberSigned"/>
 
-            <TextView android:text="(уд./мин.)" />
+            <TextView android:text="@string/bpm" />
         </TableRow>
 
         <TableRow android:gravity="center_vertical" >
 
-            <TextView android:text="САД:" />
+            <TextView android:text="@string/SAP" />
 
             <EditText
                 android:id="@+id/systolicPressure"
                 android:minWidth="100dp"
                 android:inputType="numberSigned"/>
 
-            <TextView android:text="(мм рт. ст.)" />
+            <TextView android:text="@string/mm_hg" />
         </TableRow>
 
     </TableLayout>
@@ -76,6 +76,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="10dp"
-        android:text="Определить"/>
+        android:text="@string/Calculate"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

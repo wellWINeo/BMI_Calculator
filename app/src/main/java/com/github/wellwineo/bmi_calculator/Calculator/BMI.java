@@ -2,18 +2,16 @@ package com.github.wellwineo.bmi_calculator.Calculator;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.github.wellwineo.bmi_calculator.R;
 
@@ -66,13 +64,28 @@ public class BMI extends Fragment {
         Intent intent = new Intent(getContext(), ResultsActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("title", "Индекс массы тела");
-        bundle.putString("result", String.valueOf(index));
+        bundle.putString("result", getRecommends(index));
         bundle.putSerializable("values", getInputData());
         intent.putExtras(bundle);
         startActivity(intent);
     }
 
-    public HashMap<String, String> getInputData(){
+    private String getRecommends(double index){
+        if (index < 18.5)
+            return getResources().getString(R.string.bmi_recommends_deficit);
+        else if (18.5 < index && index < 25)
+            return getResources().getString(R.string.bmi_recommends_norm);
+        else if (25 < index && index < 30)
+            return getResources().getString(R.string.bmi_recommends_proficit);
+        else if (30 < index && index < 35)
+            return getResources().getString(R.string.bmi_recommends_1_stage);
+        else if (35 < index && index < 40)
+            return getResources().getString(R.string.bmi_recommends_2_stage);
+        else
+            return getResources().getString(R.string.bmi_recommends_3_stage);
+    }
+
+    private HashMap<String, String> getInputData(){
         HashMap<String, String> map = new HashMap<>();
         map.put("weight", etWeight.getText().toString());
         map.put("height", etHeight.getText().toString());

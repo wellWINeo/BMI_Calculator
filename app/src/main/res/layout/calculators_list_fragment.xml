@@ -16,7 +16,7 @@
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="@color/cardview_dark_background"
-        android:text="Укажите:"
+        android:text="@string/Define"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content">
             <TableRow android:gravity="center">
-                <TextView android:text="Пол: " />
+                <TextView android:text="@string/sex" />
                 <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -43,16 +43,16 @@
                     <RadioButton android:id="@+id/radio_pirates"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="муж." />
+                        android:text="@string/man" />
                     <RadioButton android:id="@+id/radio_ninjas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="жен." />
+                        android:text="@string/woman" />
                 </RadioGroup>
             </TableRow>
 
             <TableRow>
-                <TextView android:text="Возраст: " />
+                <TextView android:text="@string/age" />
                 <EditText
                     android:id="@+id/etAge"
 
@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_launcher"
-            />
+            android:contentDescription="@string/reu" />
     </LinearLayout>
 
     <ScrollView

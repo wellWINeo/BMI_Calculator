@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="Онлайн калькулятор функционального состояния индекса массы тела"
+        android:text="@string/HomeTitle"
         android:textSize="35sp"
         android:textColor="@color/cardview_dark_background"
         android:textStyle="bold"
@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textSize="25sp"
-            android:text="8 показателей" />
+            android:text="@string/EightIndexes" />
 
         <View
             android:layout_width="0dp"
@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_launcher"
-            />
+            android:contentDescription="@string/reu" />
     </LinearLayout>
 
     <!--    organs    -->
@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_launcher"
-            />
+            android:contentDescription="@string/heart_image" />
 
         <View
             android:layout_width="0dp"
@@ -79,7 +79,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:textSize="35sp"
-            android:text="+" />
+            android:text="@string/plus" />
 
         <View
             android:layout_width="0dp"
@@ -91,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_launcher"
-            />
+            android:contentDescription="@string/lungs_image" />
     </LinearLayout>
 
     <!--    plus and bmi text-->
@@ -108,7 +108,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:textSize="35sp"
-            android:text="+" />
+            android:text="@string/plus" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -116,6 +116,6 @@
             android:gravity="center"
             android:textSize="35sp"
             android:textStyle="italic"
-            android:text="BMI" />
+            android:text="@string/bmi" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

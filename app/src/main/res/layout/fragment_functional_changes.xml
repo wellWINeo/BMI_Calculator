@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
-        android:text="Индекс функциональных изменений"
+        android:text="@string/FunctionChanges_title"
         android:textSize="25sp"
         android:textColor="@color/cardview_dark_background"
         android:textStyle="bold"
@@ -26,7 +26,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:text="С помощью этого теста оценивают функциональные возможности системы кровообращения."
+        android:text="@string/FunctionalChange_desc"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,7 @@
             android:gravity="center_vertical"
             android:weightSum="5">
             <TextView
-                android:text="ЧСС:"
+                android:text="@string/heartrate"
                 android:layout_weight="3" />
 
             <EditText
@@ -56,7 +56,7 @@
                 android:inputType="numberSigned"/>
 
             <TextView
-                android:text="(уд./мин.)"
+                android:text="@string/bpm"
                 android:layout_weight="1"/>
         </TableRow>
 
@@ -64,7 +64,7 @@
             android:gravity="center_vertical"
             android:weightSum="5">
             <TextView
-                android:text="САД (сист. давлен.):"
+                android:text="@string/SAP"
                 android:layout_weight="3" />
 
             <EditText
@@ -74,7 +74,7 @@
                 android:inputType="numberSigned"/>
 
             <TextView
-                android:text="(мм рт.ст.)"
+                android:text="@string/mm_hg"
                 android:layout_weight="1"/>
         </TableRow>
 
@@ -82,17 +82,18 @@
             android:gravity="center_vertical"
             android:weightSum="5">
             <TextView
-                android:text="ДАД (диаст. давлен.):"
+                android:text="@string/DAP"
                 android:layout_weight="3" />
 
             <EditText
                 android:id="@+id/diastolicPressure"
                 android:minWidth="100dp"
                 android:layout_weight="2"
-                android:inputType="numberSigned"/>
+                android:inputType="numberSigned"
+                android:importantForAutofill="no" />
 
             <TextView
-                android:text="(мм рт.ст.)"
+                android:text="@string/mm_hg"
                 android:layout_weight="1"/>
         </TableRow>
 
@@ -100,7 +101,7 @@
             android:gravity="center_vertical"
             android:weightSum="5">
             <TextView
-                android:text="Возраст:"
+                android:text="@string/age"
                 android:layout_weight="3" />
 
             <EditText
@@ -110,7 +111,7 @@
                 android:inputType="numberSigned"/>
 
             <TextView
-                android:text="(лет)"
+                android:text="@string/years"
                 android:layout_weight="1"/>
         </TableRow>
 
@@ -118,7 +119,7 @@
             android:gravity="center_vertical"
             android:weightSum="5">
             <TextView
-                android:text="Вес:"
+                android:text="@string/weight"
                 android:layout_weight="3" />
 
             <EditText
@@ -128,7 +129,7 @@
                 android:inputType="numberSigned"/>
 
             <TextView
-                android:text="(кг)"
+                android:text="@string/kg"
                 android:layout_weight="1"/>
         </TableRow>
 
@@ -136,7 +137,7 @@
             android:gravity="center_vertical"
             android:weightSum="5">
             <TextView
-                android:text="Рост:"
+                android:text="@string/height"
                 android:layout_weight="3" />
 
             <EditText
@@ -146,7 +147,7 @@
                 android:inputType="numberSigned"/>
 
             <TextView
-                android:text="(см)"
+                android:text="@string/cm"
                 android:layout_weight="1"/>
         </TableRow>
 
@@ -160,6 +161,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="10dp"
-        android:text="Определить"/>
+        android:text="@string/Calculate"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

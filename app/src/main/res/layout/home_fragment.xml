@@ -46,9 +46,9 @@
 
         <ImageView
             android:layout_marginEnd="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/reu_logo"
             android:contentDescription="@string/reu" />
     </LinearLayout>
 
@@ -64,9 +64,9 @@
         app:layout_constraintTop_toBottomOf="@+id/first_row">
         <ImageView
             android:layout_marginStart="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/heart_logo"
             android:contentDescription="@string/heart_image" />
 
         <View
@@ -88,9 +88,9 @@
 
         <ImageView
             android:layout_marginEnd="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/lungs_logo"
             android:contentDescription="@string/lungs_image" />
     </LinearLayout>
 
@@ -99,7 +99,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:id="@+id/thidr_row"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/second_row">

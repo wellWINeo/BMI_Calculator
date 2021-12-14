@@ -7,14 +7,14 @@
         <entry key="app/src/main/res/drawable/reu_logo_background.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/layout/activity_calculate.xml" value="0.55" />
         <entry key="app/src/main/res/layout/activity_calculate_view.xml" value="0.2828125" />
-        <entry key="app/src/main/res/layout/activity_calculator_view.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/activity_calculator_view.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="app/src/main/res/layout/activity_results.xml" value="0.4" />
         <entry key="app/src/main/res/layout/activity_startup.xml" value="0.264" />
         <entry key="app/src/main/res/layout/activity_view_pager.xml" value="0.2828125" />
         <entry key="app/src/main/res/layout/calculators_list_fragment.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/fragment_b_m_i.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_cardio.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_b_m_i.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment_cardio.xml" value="0.45" />
         <entry key="app/src/main/res/layout/fragment_functional_changes.xml" value="0.55" />
         <entry key="app/src/main/res/layout/fragment_life_index.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_motor_ability.xml" value="0.625" />
@@ -22,7 +22,7 @@
         <entry key="app/src/main/res/layout/fragment_skibinski_index.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_stamina.xml" value="0.55" />
         <entry key="app/src/main/res/layout/fragment_vegetative_index.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/home_fragment.xml" value="0.3328125" />
+        <entry key="app/src/main/res/layout/home_fragment.xml" value="0.45" />
         <entry key="app/src/main/res/layout/result_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/results_fragment.xml" value="0.264" />
         <entry key="app/src/main/res/menu/navigation_items.xml" value="0.17604166666666668" />

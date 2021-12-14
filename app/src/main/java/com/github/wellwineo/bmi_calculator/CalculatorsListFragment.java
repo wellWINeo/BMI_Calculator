@@ -13,27 +13,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CalculatorsListFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.github.wellwineo.bmi_calculator.Calculator.Sex;
+
 public class CalculatorsListFragment extends Fragment {
 
     LinearLayout llButtons;
+    EditText etAge;
+    RadioGroup rgSexGroup;
+    RadioButton rbMaleButton;
+    RadioButton rbFemaleButton;
     Context context;
 
     public CalculatorsListFragment() { }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     * @return A new instance of fragment CalculatorsListFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static CalculatorsListFragment newInstance() {
         return new CalculatorsListFragment();
     }
@@ -61,9 +60,33 @@ public class CalculatorsListFragment extends Fragment {
             btn.setText(categories[i]);
             int finalI = i;
             btn.setOnClickListener(view -> {
+                // read sex info from radio group
+                Sex sex;
+                if (rbMaleButton.isChecked())
+                    sex = Sex.MALE;
+                else if (rbFemaleButton.isChecked())
+                    sex = Sex.FEMALE;
+                else {
+                    Toast.makeText(context, "пожалуйста, укажите ваш пол",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                int age = 0;
+                try {
+                    age = Integer.parseInt(String.valueOf(etAge.getText()));
+                } catch (NumberFormatException e){
+                    e.printStackTrace();
+                    Toast.makeText(context, "пожалуйста, укажите ваш возраст",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Intent intent = new Intent(context, CalculatorViewActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt("index", finalI);
+                bundle.putInt("age", age);
+                bundle.putString("sex", sex.toString());
                 intent.putExtras(bundle);
                 startActivity(intent);
             });
@@ -77,6 +100,9 @@ public class CalculatorsListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         llButtons = view.findViewById(R.id.llButtons);
+        etAge = view.findViewById(R.id.etAge);
+        rbMaleButton = view.findViewById(R.id.radio_male);
+        rbFemaleButton = view.findViewById(R.id.radio_female);
     }
 
     @Override

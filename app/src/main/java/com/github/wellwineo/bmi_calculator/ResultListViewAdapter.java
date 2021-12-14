@@ -80,6 +80,12 @@ public class ResultListViewAdapter implements ListAdapter {
 
             title.setText(result.getTitle());
             resultDesc.setText(result.getResult());
+
+            if (result.isOk()) {
+                img.setImageResource(R.drawable.ok_picture);
+            } else {
+                img.setImageResource(R.drawable.not_ok_logo);
+            }
         }
 
         return view;

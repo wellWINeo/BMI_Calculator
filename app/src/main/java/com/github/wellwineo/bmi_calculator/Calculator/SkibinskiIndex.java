@@ -1,6 +1,7 @@
 package com.github.wellwineo.bmi_calculator.Calculator;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -82,11 +83,29 @@ public class SkibinskiIndex extends Fragment {
         }
 
         double skibinskiIndex = ((lungsVolume / 100) * stange) / heartrate;
+        Resources resources = getResources();
 
         Intent intent = new Intent(getContext(), ResultsActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("title", "Циркулярно респираторный коэффицент Скибински");
-        bundle.putString("result", String.valueOf(skibinskiIndex));
+        bundle.putString("title", resources.getString(R.string.SkibinskiIndex_title));
+
+        if (skibinskiIndex <= 5)
+            bundle.putString("result", resources.getString(
+                    R.string.skibinski_lt_5));
+        else if (5 < skibinskiIndex && skibinskiIndex <= 10)
+            bundle.putString("result", resources.getString(
+                    R.string.skibinski_5_10));
+        else if (10 < skibinskiIndex && skibinskiIndex <= 30)
+            bundle.putString("result", resources.getString(
+                    R.string.skibinski_10_30));
+        else if (30 < skibinskiIndex && skibinskiIndex <= 60)
+            bundle.putString("result", resources.getString(
+                    R.string.skibinski_30_60));
+        else if (60 < skibinskiIndex)
+            bundle.putString("result", resources.getString(
+                    R.string.skibinski_gt_60));
+
+        bundle.putString("result_verb", resources.getString(R.string.skibinski_methodic));
         bundle.putSerializable("values", getInputData());
         intent.putExtras(bundle);
         startActivity(intent);

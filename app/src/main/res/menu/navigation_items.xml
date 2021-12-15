@@ -6,20 +6,20 @@
         android:id="@+id/home_tab"
         android:enabled="true"
         app:showAsAction="ifRoom"
-        android:title="Дом"
-        android:icon="@drawable/ic_launcher_background"/>
+        android:title="@string/Home_MenuTab"
+        android:icon="@drawable/home_icon"/>
 
     <item
         android:id="@+id/calculate_tab"
         android:enabled="true"
         app:showAsAction="ifRoom"
-        android:title="Калькуляторы"
-        android:icon="@drawable/ic_launcher_background"/>
+        android:title="@string/Calculators_MenuTab"
+        android:icon="@drawable/calculator_icon"/>
 
     <item
         android:id="@+id/result_tab"
         android:enabled="true"
         app:showAsAction="ifRoom"
-        android:title="Результаты"
-        android:icon="@drawable/ic_launcher_background"/>
+        android:title="@string/Results_MenuTab"
+        android:icon="@drawable/results_icon"/>
 </menu>

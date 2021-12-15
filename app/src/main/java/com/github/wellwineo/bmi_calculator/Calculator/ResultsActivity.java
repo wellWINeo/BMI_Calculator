@@ -3,6 +3,7 @@ package com.github.wellwineo.bmi_calculator.Calculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,6 +23,8 @@ public class ResultsActivity extends AppCompatActivity {
 
     private String titleText = "No title";
     private String resultText = "No recommendations";
+    private String resultVerbText = "No recommendations";
+    private Boolean isOK;
     private HashMap<String, String> map;
 
     @Override
@@ -35,24 +38,27 @@ public class ResultsActivity extends AppCompatActivity {
 
 
         button.setOnClickListener(view -> finish());
+        result.setMovementMethod(new ScrollingMovementMethod());
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null){
+            isOK = bundle.getBoolean("is_ok");
             titleText = bundle.getString("title");
             resultText = bundle.getString("result");
+            resultVerbText = bundle.getString("result_verb");
             map = (HashMap<String, String>) bundle.getSerializable("values");
         }
 
-        title.setText(titleText);
         getSupportActionBar().setTitle(titleText);
-        result.setText(resultText);
+        title.setText(resultText);
+        result.setText(resultVerbText);
 
         saveToDB();
     }
 
     private void saveToDB(){
         DatabaseManager dbManager = DatabaseManager.getInstance(getApplicationContext());
-        Result result = new Result(titleText, resultText, true, map);
+        Result result = new Result(titleText, resultText, isOK, map);
         if (dbManager.addResult(result) != 0){
             Toast.makeText(getApplicationContext(),
                     "Something went wrong, can't save result",

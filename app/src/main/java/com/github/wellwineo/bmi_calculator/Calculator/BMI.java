@@ -1,6 +1,7 @@
 package com.github.wellwineo.bmi_calculator.Calculator;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ public class BMI extends Fragment {
 
     Button btn;
     EditText etWeight, etHeight;
+    Resources resources;
 
     public BMI() { }
 
@@ -39,6 +41,8 @@ public class BMI extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        resources = getResources();
+
         btn = view.findViewById(R.id.calculateButton);
 
         etWeight = view.findViewById(R.id.weight);
@@ -63,8 +67,10 @@ public class BMI extends Fragment {
 
         Intent intent = new Intent(getContext(), ResultsActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("title", "Индекс массы тела");
+        bundle.putString("title", resources.getString(R.string.bmi_calculator));
         bundle.putString("result", getRecommends(index));
+        bundle.putString("result_verb", getVerbosityRecommends());
+        bundle.putBoolean("is_ok", 18.5 < index && index < 30);
         bundle.putSerializable("values", getInputData());
         intent.putExtras(bundle);
         startActivity(intent);
@@ -72,17 +78,21 @@ public class BMI extends Fragment {
 
     private String getRecommends(double index){
         if (index < 18.5)
-            return getResources().getString(R.string.bmi_recommends_deficit);
+            return resources.getString(R.string.bmi_recommends_deficit);
         else if (18.5 < index && index < 25)
-            return getResources().getString(R.string.bmi_recommends_norm);
+            return resources.getString(R.string.bmi_recommends_norm);
         else if (25 < index && index < 30)
-            return getResources().getString(R.string.bmi_recommends_proficit);
+            return resources.getString(R.string.bmi_recommends_proficit);
         else if (30 < index && index < 35)
-            return getResources().getString(R.string.bmi_recommends_1_stage);
+            return resources.getString(R.string.bmi_recommends_1_stage);
         else if (35 < index && index < 40)
-            return getResources().getString(R.string.bmi_recommends_2_stage);
+            return resources.getString(R.string.bmi_recommends_2_stage);
         else
-            return getResources().getString(R.string.bmi_recommends_3_stage);
+            return resources.getString(R.string.bmi_recommends_3_stage);
+    }
+
+    private String getVerbosityRecommends(){
+        return resources.getString(R.string.bmi_recommends_methodic);
     }
 
     private HashMap<String, String> getInputData(){

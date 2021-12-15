@@ -1,6 +1,7 @@
 package com.github.wellwineo.bmi_calculator.Calculator;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -80,11 +81,24 @@ public class Cardio extends Fragment {
         }
 
         double cardioIndex = (heartrate * systolicPressure) / 100f;
+        Resources resources = getResources();
 
         Intent intent = new Intent(getContext(), ResultsActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("title", "Уровень регуляции сердечно-сосудистой системы");
-        bundle.putString("result", String.valueOf(cardioIndex));
+        bundle.putString("title", resources.getString(R.string.Cardio_title));
+
+        if (cardioIndex <= 74)
+            bundle.putString("result", resources.getString(R.string.cardio_lt_74));
+        else if (75 <= cardioIndex && cardioIndex <= 80)
+            bundle.putString("result", resources.getString(R.string.cardio_75_80));
+        else if (81 <= cardioIndex && cardioIndex <= 90)
+            bundle.putString("result", resources.getString(R.string.cardio_91_100));
+        else if (91 <= cardioIndex && cardioIndex <= 100)
+            bundle.putString("result", resources.getString(R.string.cardio_91_100));
+        else if (101 <= cardioIndex)
+            bundle.putString("result", resources.getString(R.string.cardio_gt_101));
+
+        bundle.putString("result_verb", resources.getString(R.string.cardio_methodic));
         bundle.putSerializable("values", getInputData());
         intent.putExtras(bundle);
         startActivity(intent);

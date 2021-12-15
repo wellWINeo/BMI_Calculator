@@ -1,6 +1,7 @@
 package com.github.wellwineo.bmi_calculator.Calculator;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -81,10 +82,21 @@ public class Stamina extends Fragment {
         double staminaCoef = ((double)(heartrate * 10)) /
                 ((double)(systolicPressure - diastolicPressure));
 
+        Resources resources = getResources();
+
         Intent intent = new Intent(getContext(), ResultsActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("title", "Коэффицент выносливости");
-        bundle.putString("result", String.valueOf(staminaCoef));
+        bundle.putString("title", resources.getString(R.string.Stamina_title));
+
+        if (staminaCoef < 16)
+            bundle.putString("result", resources.getString(
+                    R.string.stamina_not_norm));
+        else
+            bundle.putString("result", resources.getString(
+                    R.string.stamine_norm));
+
+        bundle.putString("result_verb", resources.getString(
+                R.string.stamina_methodic));
         bundle.putSerializable("values", getInputData());
         intent.putExtras(bundle);
         startActivity(intent);

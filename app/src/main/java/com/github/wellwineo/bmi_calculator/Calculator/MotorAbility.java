@@ -1,6 +1,7 @@
 package com.github.wellwineo.bmi_calculator.Calculator;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,7 @@ public class MotorAbility extends Fragment {
 
     EditText etStepsCount;
     Button btn;
+    Resources resources;
 
     public MotorAbility() { }
 
@@ -56,6 +58,9 @@ public class MotorAbility extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        resources = getResources();
+
         etStepsCount = view.findViewById(R.id.stepsCount);
         btn = view.findViewById(R.id.calculateButton);
 
@@ -75,8 +80,26 @@ public class MotorAbility extends Fragment {
 
         Intent intent = new Intent(getContext(), ResultsActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("title", "Уровень двигательной активности");
-        bundle.putString("result", String.valueOf(stepsCount));
+        bundle.putString("title", resources.getString(R.string.MotorAbility_title));
+
+        if (stepsCount < 5_000){
+            bundle.putString("result", resources.getString(R.string.motor_ability_lt_5000));
+            bundle.putString("result_verb", resources.getString(
+                    R.string.motor_ability_sedentory_work));
+        } else if (7_500 < stepsCount && stepsCount < 9_999){
+            bundle.putString("result", resources.getString(R.string.motor_ability_7500_9999));
+            bundle.putString("result_verb", resources.getString(
+                    R.string.motor_ability_some_active_work));
+        } else if (10_000 < stepsCount && stepsCount < 12_000){
+            bundle.putString("result", resources.getString(R.string.motor_ability_10k_12k));
+            bundle.putString("result_verb", resources.getString(
+                    R.string.motor_ability_active_lifestyle));
+        } else if (12_500 < stepsCount){
+            bundle.putString("result", resources.getString(R.string.motor_ability_gt_12_5k));
+            bundle.putString("result_verb", resources.getString(
+                    R.string.motor_ability_very_active_lifestyle));
+        }
+
         bundle.putSerializable("values", getInputData());
         intent.putExtras(bundle);
         startActivity(intent);

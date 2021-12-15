@@ -1,6 +1,7 @@
 package com.github.wellwineo.bmi_calculator.Calculator;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,11 +92,29 @@ public class FunctionalChanges extends Fragment {
         double functionalIndex = 0.011 * heartrate + 0.014 * systolicPressure +
                 0.008 * diastolicPressure + 0.014 * age + 0.009 * weight +
                 0.009 * height - 0.27;
+        Resources resources = getResources();
 
         Intent intent = new Intent(getContext(), ResultsActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("title", "Коэффицент выносливости");
-        bundle.putString("result", String.valueOf(functionalIndex));
+        bundle.putString("title", resources.getString(R.string.FunctionChanges_title));
+
+        if (functionalIndex <= 2.6) {
+            bundle.putString("result", resources.getString(
+                    R.string.functional_changes_lt_2_6));
+            bundle.putString("result_verb", resources.getString(
+                    R.string.functional_changes_lt_2_6_methodic));
+        } else if (2.6 < functionalIndex && functionalIndex <= 3.09) {
+            bundle.putString("result", resources.getString(
+                    R.string.functional_changes_2_6_3_09));
+            bundle.putString("result_verb", resources.getString(
+                    R.string.functional_changes_2_6_3_09_methodic));
+        } else if (3.09 < functionalIndex) {
+            bundle.putString("result", resources.getString(
+                    R.string.functional_changes_gt_3_09));
+            bundle.putString("result_verb", resources.getString(
+                    R.string.functional_changes_gt_3_09_methodic));
+        }
+
         bundle.putSerializable("values", getInputData());
         intent.putExtras(bundle);
         startActivity(intent);

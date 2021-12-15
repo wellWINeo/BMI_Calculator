@@ -67,4 +67,7 @@
     <string name="lungs_image">lungs image</string>
     <string name="bmi">BMI</string>
     <string name="Results">Результаты:</string>
+    <string name="Home_MenuTab">Дом</string>
+    <string name="Calculators_MenuTab">Калькуляторы</string>
+    <string name="Results_MenuTab">Результаты</string>
 </resources>

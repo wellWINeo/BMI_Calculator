@@ -1,6 +1,7 @@
 package com.github.wellwineo.bmi_calculator.Calculator;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -78,11 +79,29 @@ public class VegetativeIndex extends Fragment {
         }
 
         double vegetativeIndex = 100 * (1 - diastolicPressure / heartrate);
+        Resources resources = getResources();
 
         Intent intent = new Intent(getContext(), ResultsActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("title", "Вегетативный индекс Кердо");
-        bundle.putString("result", String.valueOf(vegetativeIndex));
+        bundle.putString("title", resources.getString(R.string.Vegetative_title));
+
+        if (vegetativeIndex >= 31)
+            bundle.putString("result", resources.getString(
+                    R.string.vegetative_gt_31));
+        else if (16 <= vegetativeIndex && vegetativeIndex <= 30)
+            bundle.putString("result", resources.getString(
+                    R.string.vegetative_16_30));
+        else if (-15 <= vegetativeIndex && vegetativeIndex <= 15)
+            bundle.putString("result", resources.getString(
+                    R.string.vegetative_m15_m16));
+        else if (-16 <= vegetativeIndex && vegetativeIndex <= 30)
+            bundle.putString("result", resources.getString(
+                    R.string.vegetative_m16_m30));
+        else if (vegetativeIndex <= -30)
+            bundle.putString("result", resources.getString(
+                    R.string.vegetative_lt_m30));
+
+        bundle.putString("result_verb", resources.getString(R.string.vegetative_methodic));
         bundle.putSerializable("values", getInputData());
         intent.putExtras(bundle);
         startActivity(intent);

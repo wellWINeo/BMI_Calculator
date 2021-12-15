@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="motor_ability_lt_5000">
+        &lt;5000 шагов в день
+    </string>
+    <string name="motor_ability_7500_9999">
+        7500-9999 шагов в день
+    </string>
+    <string name="motor_ability_10k_12k">
+        10-12 тыс. шагов
+    </string>
+    <string name="motor_ability_gt_12.5k">
+        &gt; 12.5 тыс. шагов в день
+    </string>
+
+    <string name="motor_ability_sedentory_work">Сидячая работа</string>
+    <string name="motor_ability_some_active_work">Несколько активная работа</string>
+    <string name="motor_ability_active_lifestyle">Активный образ жизни</string>
+    <string name="motor_ability_very_active_lifestyle">Очень активный образ жизни</string>
+</resources>

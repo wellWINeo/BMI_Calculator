@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -23,7 +26,8 @@ public class ResultsFragment extends Fragment {
 
     ArrayList<Result> results;
     ListView lvResults;
-    ListAdapter adapter;
+    ResultListViewAdapter adapter;
+    Button btn;
 
     public ResultsFragment() { }
 
@@ -35,12 +39,6 @@ public class ResultsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // DEBUG
-//        results = new ArrayList<>(Arrays.asList(
-//                new Result(1, "Индекс массы тела", "Все хорошо", true, new HashMap<>()),
-//                new Result(2, "Индекс массы тела", "Все хорошо", true, new HashMap<>()),
-//                new Result(3, "Индекс массы тела", "Все хорошо", true, new HashMap<>())
-//        ));
 
         DatabaseManager dbManager = DatabaseManager.getInstance(getContext());
         results = (ArrayList<Result>) dbManager.getAllResults();
@@ -52,12 +50,14 @@ public class ResultsFragment extends Fragment {
 
         adapter = new ResultListViewAdapter(getContext(), results);
         lvResults.setAdapter(adapter);
+        btn.setOnClickListener(this::clearHandler);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         lvResults = getView().findViewById(R.id.lvResults);
+        btn = view.findViewById(R.id.clearResultsButton);
     }
 
     @Override
@@ -65,5 +65,10 @@ public class ResultsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.results_fragment, container, false);
+    }
+
+    private void clearHandler(View view){
+        DatabaseManager dbManager = DatabaseManager.getInstance(getContext());
+        dbManager.clearAllData();
     }
 }

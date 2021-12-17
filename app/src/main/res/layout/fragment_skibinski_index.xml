@@ -65,7 +65,7 @@
             <EditText
                 android:id="@+id/lungsVolume"
                 android:layout_weight="2"
-                android:inputType="numberSigned"
+                android:inputType="numberDecimal"
                 android:minWidth="100dp"
                 android:importantForAutofill="no" />
 
@@ -85,7 +85,7 @@
             <EditText
                 android:id="@+id/heartRate"
                 android:layout_weight="2"
-                android:inputType="numberSigned"
+                android:inputType="numberDecimal"
                 android:minWidth="100dp"
                 android:importantForAutofill="no" />
 
@@ -123,6 +123,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="100dp"
+            android:inputType="numberDecimal"
             android:importantForAutofill="no" />
         <TextView
             android:layout_width="wrap_content"

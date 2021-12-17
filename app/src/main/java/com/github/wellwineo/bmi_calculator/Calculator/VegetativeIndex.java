@@ -78,12 +78,19 @@ public class VegetativeIndex extends Fragment {
             return;
         }
 
-        double vegetativeIndex = 100 * (1 - diastolicPressure / heartrate);
+        Double vegetativeIndex = 100 * (1 - diastolicPressure / heartrate);
         Resources resources = getResources();
+
+        if (vegetativeIndex.isNaN() || vegetativeIndex.isInfinite()){
+            Toast.makeText(getContext(), "Некорректные данные",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Intent intent = new Intent(getContext(), ResultsActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("title", resources.getString(R.string.Vegetative_title));
+        bundle.putDouble("index", vegetativeIndex);
 
         if (vegetativeIndex >= 31)
             bundle.putString("result", resources.getString(

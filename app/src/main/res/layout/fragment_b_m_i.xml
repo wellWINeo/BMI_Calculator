@@ -48,7 +48,7 @@
             <EditText
                 android:id="@+id/weight"
                 android:width="100dp"
-                android:inputType="numberSigned"/>
+                android:inputType="numberDecimal"/>
 
             <TextView android:text="@string/kg" />
         </TableRow>

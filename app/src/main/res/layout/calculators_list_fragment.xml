@@ -55,8 +55,7 @@
                 <TextView android:text="@string/age" />
                 <EditText
                     android:id="@+id/etAge"
-
-                    android:inputType="numberSigned" />
+                    android:inputType="numberDecimal" />
             </TableRow>
         </TableLayout>
 

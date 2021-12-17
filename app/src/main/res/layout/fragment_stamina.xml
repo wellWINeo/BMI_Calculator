@@ -54,7 +54,7 @@
                 android:id="@+id/heartRate"
                 android:minWidth="100dp"
                 android:layout_weight="2"
-                android:inputType="numberSigned"
+                android:inputType="numberDecimal"
                 android:importantForAutofill="no" />
 
             <TextView
@@ -73,7 +73,7 @@
                 android:id="@+id/systolicPressure"
                 android:minWidth="100dp"
                 android:layout_weight="2"
-                android:inputType="numberSigned"
+                android:inputType="numberDecimal"
                 android:importantForAutofill="no" />
 
             <TextView
@@ -92,7 +92,7 @@
                 android:id="@+id/diastolicPressure"
                 android:minWidth="100dp"
                 android:layout_weight="2"
-                android:inputType="numberSigned"
+                android:inputType="numberDecimal"
                 android:importantForAutofill="no" />
 
             <TextView

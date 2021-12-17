@@ -82,12 +82,19 @@ public class SkibinskiIndex extends Fragment {
             return;
         }
 
-        double skibinskiIndex = ((lungsVolume / 100) * stange) / heartrate;
+        Double skibinskiIndex = ((lungsVolume / 100) * stange) / heartrate;
         Resources resources = getResources();
+
+        if (skibinskiIndex.isNaN() || skibinskiIndex.isInfinite()){
+            Toast.makeText(getContext(), "Некорректные данные",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Intent intent = new Intent(getContext(), ResultsActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("title", resources.getString(R.string.SkibinskiIndex_title));
+        bundle.putDouble("index", skibinskiIndex);
 
         if (skibinskiIndex <= 5)
             bundle.putString("result", resources.getString(

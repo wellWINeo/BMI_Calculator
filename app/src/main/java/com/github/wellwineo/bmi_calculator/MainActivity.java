@@ -36,14 +36,6 @@ public class MainActivity extends AppCompatActivity {
         // launch startup activity (probably useless)
         Intent intent = new Intent(getApplicationContext(), Startup.class);
         startActivity(intent);
-
-        boolean prevStarted = prefs.getBoolean("previously_started", false);
-//        if (!prevStarted) {
-//            SharedPreferences.Editor editor = prefs.edit();
-//            editor.putBoolean("previously_started", true);
-//            editor.apply();
-//            // TODO launch startup activity
-//        }
     }
 
     @SuppressLint("NonConstantResourceId")

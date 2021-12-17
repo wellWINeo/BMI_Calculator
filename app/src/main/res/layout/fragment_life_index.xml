@@ -53,7 +53,7 @@
                 android:id="@+id/weight"
                 android:minWidth="100dp"
                 android:layout_weight="2"
-                android:inputType="numberSigned"
+                android:inputType="numberDecimal"
                 android:importantForAutofill="no" />
 
             <TextView
@@ -72,7 +72,7 @@
                 android:id="@+id/lungsVolume"
                 android:minWidth="100dp"
                 android:layout_weight="2"
-                android:inputType="numberSigned"/>
+                android:inputType="numberDecimal"/>
 
             <TextView
                 android:text="@string/ml"

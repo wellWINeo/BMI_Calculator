@@ -79,14 +79,20 @@ public class Stamina extends Fragment {
             return;
         }
 
-        double staminaCoef = ((double)(heartrate * 10)) /
+        Double staminaCoef = ((double)(heartrate * 10)) /
                 ((double)(systolicPressure - diastolicPressure));
-
         Resources resources = getResources();
+
+        if (staminaCoef.isNaN() || staminaCoef.isInfinite()){
+            Toast.makeText(getContext(), "Некорректные данные",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Intent intent = new Intent(getContext(), ResultsActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("title", resources.getString(R.string.Stamina_title));
+        bundle.putDouble("index", staminaCoef);
 
         if (staminaCoef < 16)
             bundle.putString("result", resources.getString(

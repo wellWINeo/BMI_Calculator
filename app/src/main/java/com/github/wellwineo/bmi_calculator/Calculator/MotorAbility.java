@@ -81,6 +81,7 @@ public class MotorAbility extends Fragment {
         Intent intent = new Intent(getContext(), ResultsActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("title", resources.getString(R.string.MotorAbility_title));
+        bundle.putDouble("index", stepsCount);
 
         if (stepsCount < 5_000){
             bundle.putString("result", resources.getString(R.string.motor_ability_lt_5000));

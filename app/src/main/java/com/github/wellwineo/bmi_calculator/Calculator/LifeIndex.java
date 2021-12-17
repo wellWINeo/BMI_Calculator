@@ -79,12 +79,19 @@ public class LifeIndex extends Fragment {
             return;
         }
 
-        double lifeIndex = lungsVolume / weight;
+        Double lifeIndex = lungsVolume / weight;
         Resources resources = getResources();
+
+        if (lifeIndex.isNaN() || lifeIndex.isInfinite()){
+            Toast.makeText(getContext(), "Некорректные данные",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Intent intent = new Intent(getContext(), ResultsActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("title", resources.getString(R.string.LifeIndex_title));
+        bundle.putDouble("index", lifeIndex);
 
         if (lifeIndex < 50)
             bundle.putString("result", resources.getString(

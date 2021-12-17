@@ -70,4 +70,5 @@
     <string name="Home_MenuTab">Дом</string>
     <string name="Calculators_MenuTab">Калькуляторы</string>
     <string name="Results_MenuTab">Результаты</string>
+    <string name="clear">Clear</string>
 </resources>

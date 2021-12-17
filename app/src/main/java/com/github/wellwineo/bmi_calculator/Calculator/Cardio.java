@@ -80,19 +80,26 @@ public class Cardio extends Fragment {
             return;
         }
 
-        double cardioIndex = (heartrate * systolicPressure) / 100f;
+        Double cardioIndex = (heartrate * systolicPressure) / 100.0;
         Resources resources = getResources();
+
+        if (cardioIndex.isNaN() || cardioIndex.isInfinite()){
+            Toast.makeText(getContext(), "Некорректные данные",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Intent intent = new Intent(getContext(), ResultsActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("title", resources.getString(R.string.Cardio_title));
+        bundle.putDouble("index", cardioIndex);
 
         if (cardioIndex <= 74)
             bundle.putString("result", resources.getString(R.string.cardio_lt_74));
         else if (75 <= cardioIndex && cardioIndex <= 80)
             bundle.putString("result", resources.getString(R.string.cardio_75_80));
         else if (81 <= cardioIndex && cardioIndex <= 90)
-            bundle.putString("result", resources.getString(R.string.cardio_91_100));
+            bundle.putString("result", resources.getString(R.string.cardio_81_90));
         else if (91 <= cardioIndex && cardioIndex <= 100)
             bundle.putString("result", resources.getString(R.string.cardio_91_100));
         else if (101 <= cardioIndex)

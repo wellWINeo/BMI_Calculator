@@ -89,14 +89,21 @@ public class FunctionalChanges extends Fragment {
             return;
         }
 
-        double functionalIndex = 0.011 * heartrate + 0.014 * systolicPressure +
+        Double functionalIndex = 0.011 * heartrate + 0.014 * systolicPressure +
                 0.008 * diastolicPressure + 0.014 * age + 0.009 * weight +
                 0.009 * height - 0.27;
         Resources resources = getResources();
 
+        if (functionalIndex.isNaN() || functionalIndex.isInfinite()){
+            Toast.makeText(getContext(), "Некорректные данные",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Intent intent = new Intent(getContext(), ResultsActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("title", resources.getString(R.string.FunctionChanges_title));
+        bundle.putDouble("index", functionalIndex);
 
         if (functionalIndex <= 2.6) {
             bundle.putString("result", resources.getString(

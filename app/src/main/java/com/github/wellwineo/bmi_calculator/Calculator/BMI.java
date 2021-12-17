@@ -63,13 +63,20 @@ public class BMI extends Fragment {
             return;
         }
 
-        double index = weight / Math.pow(height, 2);
+        Double index = weight / Math.pow(height, 2);
+
+        if (index.isNaN() || index.isInfinite()){
+            Toast.makeText(getContext(), "Некорректные данные",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Intent intent = new Intent(getContext(), ResultsActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("title", resources.getString(R.string.bmi_calculator));
         bundle.putString("result", getRecommends(index));
         bundle.putString("result_verb", getVerbosityRecommends());
+        bundle.putDouble("index", index);
         bundle.putBoolean("is_ok", 18.5 < index && index < 30);
         bundle.putSerializable("values", getInputData());
         intent.putExtras(bundle);
@@ -79,13 +86,13 @@ public class BMI extends Fragment {
     private String getRecommends(double index){
         if (index < 18.5)
             return resources.getString(R.string.bmi_recommends_deficit);
-        else if (18.5 < index && index < 25)
+        else if (18.5 <= index && index < 25)
             return resources.getString(R.string.bmi_recommends_norm);
-        else if (25 < index && index < 30)
+        else if (25 <= index && index < 30)
             return resources.getString(R.string.bmi_recommends_proficit);
-        else if (30 < index && index < 35)
+        else if (30 <= index && index < 35)
             return resources.getString(R.string.bmi_recommends_1_stage);
-        else if (35 < index && index < 40)
+        else if (35 <= index && index < 40)
             return resources.getString(R.string.bmi_recommends_2_stage);
         else
             return resources.getString(R.string.bmi_recommends_3_stage);

@@ -102,6 +102,20 @@ public class DatabaseManager {
         }
     }
 
+    public int updateResult(Result result) {
+        try {
+            if (resultDao == null)
+                return -1;
+
+            resultDao.update(result);
+
+            return 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
     public List<Result> getAllResults(){
         try {
             if (resultDao == null)

@@ -2,6 +2,7 @@ package com.github.wellwineo.bmi_calculator;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.wellwineo.bmi_calculator.ormliteDB.DatabaseManager;
 import com.github.wellwineo.bmi_calculator.ormliteDB.Result;
 
 import java.lang.reflect.Array;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 public class ResultListViewAdapter implements ListAdapter {
     ArrayList<Result> results;
     Context context;
+
 
     public ResultListViewAdapter(Context context, ArrayList<Result> results){
         this.context = context;
@@ -86,6 +89,13 @@ public class ResultListViewAdapter implements ListAdapter {
             } else {
                 img.setImageResource(R.drawable.not_ok_logo);
             }
+
+            view.setOnClickListener(v-> {
+                result.setOk(!result.isOk());
+                DatabaseManager dbManager = DatabaseManager.getInstance(context);
+                dbManager.updateResult(result);
+            });
+
         }
 
         return view;
